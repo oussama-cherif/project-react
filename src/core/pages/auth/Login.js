@@ -1,26 +1,27 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Form, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import InputMail from "./InputMail";
+import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
     const [userLog, setUserLog] = useState({ email: '', password: '' });
-    const [user, setUser] = useState({ email: '', password: '' });
+    const [user, setUser] = useContext(UserContext);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const submit = (ev) => {
         ev.preventDefault();
         
-        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/;
+        const passwordRegex = /$/;
 
         if (!passwordRegex.test(userLog.password)) {
             setErrorMessage('Le mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.');
         } else {
-            let u = { lastname: 'Leponge', firstname: 'Bob', mail: userLog.email };
+            let u = { email: userLog.email };
             setUser(u);
-            sessionStorage.setItem('USER', JSON.stringify(u));
-            navigate('/');
+            sessionStorage.setItem('USER', JSON.stringify(u))
+            navigate("/")
         }
     }
 
