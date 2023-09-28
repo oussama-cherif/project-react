@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const Voitures = () => {
 const [voitures, setVoitures] = useState([])
@@ -29,7 +30,7 @@ useEffect(() => {
                         <Card.Text>
                             {voiture.model}
                         </Card.Text>
-                        <Button variant="primary">Modifier</Button>
+                        <Link to={`/voitures/edit/${voiture.id}`}><Button variant="primary">Modifier</Button></Link>
                         <Button variant="primary">Supprimer</Button>
                     </Card.Body>
                 </Card>
