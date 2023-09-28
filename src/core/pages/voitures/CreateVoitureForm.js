@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Form, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 
 const CreateVoitureForm = () => {
+  const navigate = useNavigate();
   const [brands, setBrands] = useState([])
   const [carData, setCarData] = useState({
     model: '',
@@ -38,6 +40,7 @@ const CreateVoitureForm = () => {
       axios.post('https://formation.inow.fr/demo/api/v1/cars', car)
       .then(response => {
         console.log('voiture ajoutée:', response.data);
+        navigate('/voitures');
       })
       .catch(error => {
         console.log('Error:', error);

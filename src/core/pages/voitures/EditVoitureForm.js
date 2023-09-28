@@ -3,7 +3,10 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 
+import { useNavigate } from 'react-router-dom'; 
+
 const EditVoitureForm = () => {
+  const navigate = useNavigate();
   const { carId } = useParams();
   const [brands, setBrands] = useState([]);
   const [carData, setCarData] = useState({
@@ -53,6 +56,7 @@ const EditVoitureForm = () => {
   
     axios.put(`https://formation.inow.fr/demo/api/v1/cars/${carId}`, updatedCar)
       .then(rep => {
+        navigate('/voitures');
         console.log(rep.data);
       })
       .catch(err => {
