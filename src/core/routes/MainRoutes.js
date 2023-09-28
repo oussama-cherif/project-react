@@ -6,6 +6,8 @@ import NotFound from '../pages/NotFound'
 
 import Voitures from '../pages/voitures/Index'
 import BrandList from '../pages/marques/BrandList'
+import CreateVoitureForm from '../pages/voitures/CreateVoitureForm'
+import EditVoitureForm from '../pages/voitures/EditVoitureForm'
 import CarsByBrand from '../pages/marque_voitures/CarsByBrand'
 import Login from '../pages/auth/Login'
 
@@ -20,8 +22,8 @@ const MainRoutes = () => {
         </Route> */}
         <Route path="/voitures">
           <Route index element={<Voitures />} />
-          {/* <Route path="/create" element={<VoitureCreate />} />
-          <Route path="/edit" element={<VoitureEdit />} /> */}
+          <Route path="create" element={<CreateVoitureForm />} />
+          <Route path="edit/:carId" element={<EditVoitureForm />} />
         </Route>
 
         <Route path="/marques">
