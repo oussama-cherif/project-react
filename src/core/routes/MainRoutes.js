@@ -5,6 +5,7 @@ import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
 import Voitures from '../pages/voitures/Index'
+import BrandList from '../pages/marques/BrandList'
 
 const MainRoutes = () => {
   return (
@@ -17,6 +18,12 @@ const MainRoutes = () => {
         </Route> */}
         <Route path="/voitures">
           <Route index element={<Voitures />} />
+          {/* <Route path="/create" element={<VoitureCreate />} />
+          <Route path="/edit" element={<VoitureEdit />} /> */}
+        </Route>
+
+        <Route path="/marques">
+          <Route index element={<BrandList />} />
           {/* <Route path="/create" element={<VoitureCreate />} />
           <Route path="/edit" element={<VoitureEdit />} /> */}
         </Route>
