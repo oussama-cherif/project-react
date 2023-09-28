@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function BrandList() {
-  const { id } = useParams();
-  const [brand, setBrand] = useState({});
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://formation.inow.fr/demo/api/v1/brands/${id}`)
+      .get('https://formation.inow.fr/demo/api/v1/brands')
       .then((response) => {
-        setBrand(response.data);
+        setBrands(response.data);
       })
       .catch((error) => {
-        console.error('Erreur', error);
+        console.error('Erreur lors de la récupération des données des marques :', error);
       });
-  }, [id]);
+  }, []);
 
   return (
     <div>
-      <h1>{brand.nom}</h1>
-      <img src={`/images/${brand.image}`} alt={brand.nom} />
+      <h1>Marques</h1>
+      <ul>
+        {brands.map((brand) => (
+          <li key={brand.id}>
+          <Link to={`/carsbybrand/${brand.id}`}>
+              {brand.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

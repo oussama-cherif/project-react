@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [brands, setBrands] = useState([]);
@@ -27,7 +28,7 @@ function Home() {
       <ul>
         {brands.map((brand) => (
           <li key={brand.id}>
-            <p>{brand.name}</p>
+            <Link to={`/marques/${brand.id}`}>{brand.name}</Link>
             <img src={`/images/${brand.image}`} alt={brand.name} />
           </li>
         ))}
