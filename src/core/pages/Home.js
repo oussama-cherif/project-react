@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Container, ListGroup, Image, Card } from 'react-bootstrap';
 
 function Home() {
   const [brands, setBrands] = useState([]);
@@ -16,25 +17,18 @@ function Home() {
       });
   }, []);
 
-  useEffect(() => {
-    brands.forEach((brand) => {
-      console.log(`/images/${brand.image}`);
-    });
-  }, [brands]);
-
   return (
-    <div>
-      <h1>Marques</h1>
-      <ul>
+    <Container className="mt-5">
+      <ListGroup className="d-flex flex-row mt-4">
         {brands.map((brand) => (
-          <li key={brand.id}>
-            <Link to={`/marques/${brand.id}`}>{brand.name}</Link>
-            <img src={`/images/${brand.image}`} alt={brand.name} />
-          </li>
+          <ListGroup.Item key={brand.id} className="d-flex align-items-center">
+            <Link to={`/marques/${brand.id}`} className="text-decoration-none mr-3"><Image src={`/images/${brand.image}`} alt={brand.name} className="brand-image" /></Link>
+          </ListGroup.Item>
         ))}
-      </ul>
-    </div>
+      </ListGroup>
+    </Container>
   );
 }
 
 export default Home;
+
