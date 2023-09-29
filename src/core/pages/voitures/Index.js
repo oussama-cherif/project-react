@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { UserContext } from '../../context/UserContext';
 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -9,9 +10,10 @@ import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Voitures = () => {
-const [voitures, setVoitures] = useState([])
+    const [user] = useContext(UserContext)
+    const [voitures, setVoitures] = useState([])
 
-useEffect(() => {
+    useEffect(() => {
     axios.get("https://formation.inow.fr/demo/api/v1/cars")
         .then(rep => {
             setVoitures(rep.data)
@@ -48,8 +50,10 @@ useEffect(() => {
                         <Card.Text>
                             {voiture.model}
                         </Card.Text>
-                        <Link to={`/voitures/edit/${voiture.id}`}><Button variant="primary" className="me-2">Modifier</Button></Link>
-                        <Button variant="danger" onClick={() => deleteCar(voiture.id)}>Supprimer</Button>
+                        {user ? <>
+                            <Link to={`/voitures/edit/${voiture.id}`}><Button variant="primary" className="me-2">Modifier</Button></Link>
+                            <Button variant="danger" onClick={() => deleteCar(voiture.id)}>Supprimer</Button>
+                        </> : null}
                     </Card.Body>
                 </Card>
             ))}
