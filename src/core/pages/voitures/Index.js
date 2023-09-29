@@ -50,9 +50,17 @@ const Voitures = () => {
                         <Card style={{ width: '18rem' }}>
                             <Card.Body>
                                 <Card.Title>{voiture.brandId}</Card.Title>
-                                <Card.Text>
-                                    {voiture.model}
-                                </Card.Text>
+                                <Card>
+                                    <Card.Body>
+                                        <h5 className="card-title">Informations sur la voiture</h5>
+                                        <ul>
+                                            <li><strong>Modèle:</strong> {voiture.model}</li>
+                                            <li><strong>Prix:</strong> {voiture.price}</li>
+                                            <li><strong>Date de circulation:</strong> {voiture.dateOfCirculation}</li>
+                                            <li><strong>Marque:</strong> {voiture.brand}</li>
+                                        </ul>
+                                    </Card.Body>
+                                </Card>
                                 {user ? <>
                                     <Link to={`/voitures/edit/${voiture.id}`}><Button variant="primary" className="me-2">Modifier</Button></Link>
                                     <Button variant="danger" onClick={() => deleteCar(voiture.id)}>Supprimer</Button>
@@ -67,3 +75,35 @@ const Voitures = () => {
 }
 
 export default Voitures
+
+
+
+
+/*
+return (
+        <Container>
+            <ToastContainer />
+            <Row>
+                {voitures.map(voiture => (
+                    <Col md={4} className="mb-4" key={voiture.id}>  
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Body>
+                                <Card.Title>{voiture.brandId}</Card.Title>
+                                <Card key={voiture.id} style={{ width: '18rem' }}>
+                                    <Card.Body>
+                                        <Card.Title>Nom du modèle : {voiture.model}</Card.Title>
+                                        <Card.Text>Année : {voiture.dateOfCirculation}</Card.Text>
+                                        <Card.Text>Prix : {voiture.price}$</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                                {user ? <>
+                                    <Link to={`/voitures/edit/${voiture.id}`}><Button variant="primary" className="me-2">Modifier</Button></Link>
+                                    <Button variant="danger" onClick={() => deleteCar(voiture.id)}>Supprimer</Button>
+                                </> : null}
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+        </Container>
+    );*/
