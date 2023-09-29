@@ -23,7 +23,7 @@ const InputMail = ({ label, onChange, ...other }) => {
             <Form.Control type="email" {...other} className={!isValid && "input-error"}
                 onChange={handleInputChange} />
 
-            {isValid === false && (<p style={{ color: 'red' }}>Format du mail invalide.</p>)}
+            {isValid === false && (<p style={{color: 'red'}}>Format du mail invalide.</p>)}
         </Form.Group>
     );
 }
