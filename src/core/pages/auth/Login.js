@@ -22,6 +22,7 @@ const Login = () => {
             let u = { email: userLog.email };
             setUser(u);
             sessionStorage.setItem('USER', JSON.stringify(u))
+            console.log(user)
             navigate("/")
         }
     }
