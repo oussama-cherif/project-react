@@ -12,17 +12,30 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: true,
-    fallbackLng: 'en',
+    fallbackLng: 'fr',
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    resources: {
-      en: {
+resources: {
+    en: {
         translation: {
-          // here we will place our translations...
+            home: 'Home',
+            cars: 'Cars',
+            addcar: 'Add A car',
+            logout:'Log out',
+            login: 'Log in'
         }
-      }
+    },
+    fr: {
+        translation: {
+            home: 'Accueil',
+            cars: 'Voitures',
+            addcar: 'Ajouter une voiture',
+            logout:'Se deconnecter',
+            login: 'Se connecter'
+        }
     }
+}
   });
 
 export default i18n;
