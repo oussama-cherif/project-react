@@ -12,9 +12,10 @@ const Login = () => {
 
     const submit = (ev) => {
         ev.preventDefault();
+    
+        /*const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/;*/
+        const passwordRegex = /$/
         
-        const passwordRegex = /$/;
-
         if (!passwordRegex.test(userLog.password)) {
             setErrorMessage('Le mot de passe doit contenir au moins 6 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.');
         } else {
