@@ -5,7 +5,8 @@ import { UserContext } from './core/context/UserContext';
 import { useState } from 'react';
 
 function App() {
-  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('USER')))
+  // const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('USER')))
+  const [user, setUser] = useState(null);
   return (
     <UserContext.Provider value={[user, setUser]}>
       <BrowserRouter>
