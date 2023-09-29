@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { format } from 'date-fns';
+import { Card } from 'react-bootstrap';
 
 function CarsByBrand() {
   const { id } = useParams();
@@ -30,8 +31,28 @@ function CarsByBrand() {
       });
     }, [id]);
   
-
     return (
+      <div>
+        <h2>Marque : {brand ? brand.name : 'Chargement'}</h2>
+        <img src={`/images/${brand.image}`} alt={brand.name} />
+  
+        {cars.map((car) => (
+          <Card key={car.id} style={{ width: '18rem' }}>
+            <Card.Body>
+              <Card.Title>Nom du modèle : {car.model}</Card.Title>
+              <Card.Text>
+                Année : {format(new Date(car.dateOfCirculation), 'yyyy')}
+              </Card.Text>
+              <Card.Text>Prix : {car.price}$</Card.Text>
+              <Card.Text>
+                Marque : {brand ? brand.name : 'Chargement'}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+    );
+    /*return (
         <div>
           <h1>Marque : {brand ? brand.name : 'Chargement'}</h1>
           <img src={`/images/${brand.image}`} alt={brand.name} />
@@ -46,7 +67,7 @@ function CarsByBrand() {
             ))}
           </ul>
         </div>
-      );
+      );*/
           }    
 
 export default CarsByBrand;

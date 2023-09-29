@@ -5,7 +5,6 @@ import { UserContext } from '../context/UserContext'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 import Voitures from '../pages/voitures/Index'
-import BrandList from '../pages/marques/BrandList'
 import CreateVoitureForm from '../pages/voitures/CreateVoitureForm'
 import EditVoitureForm from '../pages/voitures/EditVoitureForm'
 import CarsByBrand from '../pages/marque_voitures/CarsByBrand'
@@ -37,7 +36,7 @@ const MainRoutes = () => {
         </Route>
 
         <Route path="/marques">
-          <Route index element={<BrandList />} />
+          <Route index element={<Home />} />
           <Route path=":id" element={<CarsByBrand />} />
         </Route>
 
