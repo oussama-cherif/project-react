@@ -10,6 +10,7 @@ const EditVoitureForm = () => {
   const { carId } = useParams();
   const [brands, setBrands] = useState([]);
   const [carData, setCarData] = useState({
+    id:'',
     model: '',
     dateOfCirculation: '',
     price: '',
@@ -20,6 +21,7 @@ const EditVoitureForm = () => {
     axios.get(`https://formation.inow.fr/demo/api/v1/cars/${carId}`)
       .then((response) => {
         setCarData({
+          id:response.data.id,
           model: response.data.model,
           dateOfCirculation: response.data.dateOfCirculation.split('T')[0],
           price: response.data.price,
@@ -46,10 +48,12 @@ const EditVoitureForm = () => {
     e.preventDefault();
   
     const updatedCar = {
+        id: carData.id,
         model: carData.model,
         dateOfCirculation: carData.dateOfCirculation,
         price: parseFloat(carData.price), 
-        brandID: parseInt(carData.brandID) 
+        brandID: parseInt(carData.brandID),
+        brand: null
     }
   
     console.log('Updated Car Data:', updatedCar);
@@ -101,4 +105,4 @@ const EditVoitureForm = () => {
   )
 }
 
-export default EditVoitureForm
+export default EditVoitureForm;
