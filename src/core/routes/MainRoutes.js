@@ -20,11 +20,6 @@ const MainRoutes = () => {
   return (
     <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/login" element={<Login />}/>
-        <Route path='/marques' >
-            <Route index  element={<Marque />} />
-            <Route path="/:id" element={<MarqueDetail />} />
-        </Route> */}
         <Route path="/voitures">
           <Route index element={<Voitures />} />
 
@@ -44,15 +39,11 @@ const MainRoutes = () => {
         <Route path="/marques">
           <Route index element={<BrandList />} />
           <Route path=":id" element={<CarsByBrand />} />
-          {/* <Route path="/create" element={<VoitureCreate />} />
-          <Route path="/edit" element={<VoitureEdit />} /> */}
         </Route>
 
         <Route path="/login">
           <Route index element={<Login />} />
           <Route path=":id" element={<Login />} />
-          {/* <Route path="/create" element={<VoitureCreate />} />
-          <Route path="/edit" element={<VoitureEdit />} /> */}
         </Route>
 
         <Route path='404' element={<NotFound />} />

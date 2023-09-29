@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Container, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 
 const CreateVoitureForm = () => {
@@ -48,36 +48,39 @@ const CreateVoitureForm = () => {
 };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="model">
-        <Form.Label>Model</Form.Label>
-        <Form.Control type="text" name="model" value={carData.model} onChange={changeFormField} required />
-      </Form.Group>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="model">
+          <Form.Label>Model</Form.Label>
+          <Form.Control type="text" name="model" value={carData.model} onChange={changeFormField} required />
+        </Form.Group>
 
-      <Form.Group controlId="dateOfCirculation">
-        <Form.Label>Date of Circulation</Form.Label>
-        <Form.Control type="date" name="dateOfCirculation" value={carData.dateOfCirculation} onChange={changeFormField} required />
-      </Form.Group>
+        <Form.Group controlId="dateOfCirculation">
+          <Form.Label>Date of Circulation</Form.Label>
+          <Form.Control type="date" name="dateOfCirculation" value={carData.dateOfCirculation} onChange={changeFormField} required />
+        </Form.Group>
 
-      <Form.Group controlId="price">
-        <Form.Label>Price</Form.Label>
-        <Form.Control type="number" name="price" value={carData.price} onChange={changeFormField} required />
-      </Form.Group>
+        <Form.Group controlId="price">
+          <Form.Label>Price</Form.Label>
+          <Form.Control type="number" name="price" value={carData.price} onChange={changeFormField} required />
+        </Form.Group>
 
-      <Form.Group controlId="brandID">
-        <Form.Label>Brand</Form.Label>
-        <Form.Select name="brandID" value={carData.brandID} onChange={changeFormField} required>
-          <option value="" disabled>Select a brand</option>
-          {brands.map(brand => (
-            <option key={brand.id} value={brand.id}>{brand.name}</option>
-          ))}
-        </Form.Select>
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Ajouter
-      </Button>
-    </Form>
+        <Form.Group controlId="brandID">
+          <Form.Label>Brand</Form.Label>
+          <Form.Select name="brandID" value={carData.brandID} onChange={changeFormField} required>
+            <option value="" disabled>Select a brand</option>
+            {brands.map(brand => (
+              <option key={brand.id} value={brand.id}>{brand.name}</option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+        <Col className="text-center mt-4"> 
+          <Button variant="primary" type="submit">
+            Ajouter
+          </Button>
+        </Col>
+      </Form>
+    </Container>
   )
 }
 

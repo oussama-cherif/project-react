@@ -9,7 +9,7 @@ import { UserContext } from '../../context/UserContext';
 const Header = () => {
     const [user, setUser] = useContext(UserContext);
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary mb-4">
     <Container>
       <Link className="navbar-brand" to="/">voitures</Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
