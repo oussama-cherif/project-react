@@ -57,7 +57,6 @@ const Voitures = () => {
                                             <li><strong>Modèle:</strong> {voiture.model}</li>
                                             <li><strong>Prix:</strong> {voiture.price}</li>
                                             <li><strong>Date de circulation:</strong> {voiture.dateOfCirculation}</li>
-                                            <li><strong>Marque:</strong> {voiture.brand}</li>
                                         </ul>
                                     </Card.Body>
                                 </Card>
