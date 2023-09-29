@@ -19,7 +19,6 @@ const Voitures = () => {
     axios.get("https://formation.inow.fr/demo/api/v1/cars")
         .then(rep => {
             setVoitures(rep.data)
-            console.log(voitures)
         })
         .catch(err => console.log(err.message))
     }, []);
